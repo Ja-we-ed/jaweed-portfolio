@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: hsl(224 55% 4%);
+  --color-bg-elevated: hsl(224 40% 7%);
+  --color-bg-card: hsl(224 35% 9%);
+  --color-border: hsl(220 20% 16%);
+  --color-border-strong: hsl(210 25% 22%);
+  --color-primary: hsl(199 96% 58%);
+  --color-primary-dim: hsl(199 80% 42%);
+  --color-primary-soft: hsl(199 96% 58% / 0.12);
+  --color-text: hsl(210 40% 96%);
+  --color-muted: hsl(215 16% 62%);
+  --color-muted-dim: hsl(215 16% 62%);
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: hsl(199 96% 58% / 0.35);
+    color: white;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button {
+    font: inherit;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  .font-mono {
+    font-family: var(--font-mono);
+  }
+
+  .text-gradient {
+    background: linear-gradient(
+      115deg,
+      hsl(199 96% 72%) 0%,
+      hsl(199 96% 58%) 45%,
+      hsl(190 90% 50%) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .glass {
+    background: hsl(224 55% 6% / 0.72);
+    backdrop-filter: blur(18px) saturate(1.35);
+    -webkit-backdrop-filter: blur(18px) saturate(1.35);
+    border: 1px solid hsl(210 25% 100% / 0.06);
+  }
+
+  .grid-glow {
+    background-image:
+      radial-gradient(ellipse 80% 50% at 50% -10%, hsl(199 96% 58% / 0.18), transparent 55%),
+      radial-gradient(ellipse 40% 30% at 90% 20%, hsl(210 80% 40% / 0.08), transparent 50%),
+      linear-gradient(hsl(220 30% 100% / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(220 30% 100% / 0.03) 1px, transparent 1px);
+    background-size: auto, auto, 48px 48px, 48px 48px;
+    background-position: center, center, center, center;
+  }
+
+  .card-shine {
+    background:
+      linear-gradient(145deg, hsl(224 35% 11%) 0%, hsl(224 40% 7%) 100%);
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@layer utilities {
+  .marquee {
+    animation: marquee-x var(--marquee-duration, 50s) linear infinite;
+  }
+
+  .marquee-reverse {
+    animation: marquee-x-reverse var(--marquee-duration, 50s) linear infinite;
+  }
+}
+
+@keyframes marquee-x {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes marquee-x-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee,
+  .marquee-reverse {
+    animation: none !important;
+  }
+}
+
+/* Slightly smoother marquee easing feel via longer duration + GPU hint */
+.marquee,
+.marquee-reverse {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto !important;
+  }
+
+  .skill-orbit-a,
+  .skill-orbit-b,
+  .skill-orbit-c,
+  .circuit-pulse,
+  .ai-node-pulse,
+  .animate-ping,
+  .animate-pulse {
+    animation: none !important;
+  }
+}
+
+
+.marquee-track:hover .marquee,
+.marquee-track:hover .marquee-reverse {
+  animation-play-state: paused;
+}
+
+.marquee-fade {
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 7%, #000 93%, transparent 100%);
+}
+
+.logo-tile:hover {
+  color: var(--brand);
+}
+
+:focus-visible {
+  outline: 2px solid hsl(199 96% 58%);
+  outline-offset: 3px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.skill-orbit {
+  position: absolute;
+  left: 58%;
+  top: 58%;
+  border: 1px dashed hsla(199, 96%, 58%, 0.16);
+  border-radius: 50%;
+  translate: -50% -50%;
+  pointer-events: none;
+}
+
+.skill-orbit-a {
+  width: 640px;
+  height: 640px;
+  animation: orbit-spin 56s linear infinite;
+}
+
+.skill-orbit-b {
+  width: 420px;
+  height: 420px;
+  animation: orbit-spin 38s linear infinite reverse;
+}
+
+.skill-orbit-c {
+  width: 260px;
+  height: 260px;
+  animation: orbit-spin 26s linear infinite;
+}
+
+@keyframes orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+.group:hover .skill-glyph {
+  color: var(--brand, hsl(199 96% 58%));
+  border-color: hsla(199, 96%, 58%, 0.4);
+}
+
+.circuit-pulse {
+  animation: circuit-fall 4.8s ease-in-out infinite;
+}
+
+@keyframes circuit-fall {
+  0% { top: 8%; opacity: 0; }
+  12% { opacity: 1; }
+  88% { opacity: 1; }
+  100% { top: 88%; opacity: 0; }
+}
+
+.project-mask-x {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 7%, #000 93%, transparent);
+}
+.ai-node-pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: ai-node-glow 3.6s ease-in-out infinite;
+}
+
+@keyframes ai-node-glow {
+  0%, 100% { opacity: 0.75; }
+  50% { opacity: 1; }
+}
