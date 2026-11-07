@@ -71,7 +71,7 @@ export function Nav() {
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.15 + i * 0.05, duration: 0.5, ease: easeOutExpo }}
-              className="group relative rounded-lg px-3 py-2 text-[13px] font-medium text-muted transition hover:bg-white/[0.04] hover:text-text"
+              className="group relative flex min-h-11 items-center rounded-lg px-3 py-2 text-[13px] lg:min-h-0 font-medium text-muted transition hover:bg-white/[0.04] hover:text-text"
               whileHover={{ y: -1 }}
             >
               {item.label}
@@ -89,7 +89,7 @@ export function Nav() {
         <motion.button
           type="button"
           aria-label={open ? 'Close menu' : 'Open menu'}
-          className="flex h-10 w-10 items-center justify-center rounded-xl text-muted transition hover:bg-white/[0.05] hover:text-text md:hidden"
+          className="flex h-11 w-11 items-center justify-center rounded-xl text-muted transition hover:bg-white/[0.05] hover:text-text md:hidden"
           onClick={() => setOpen((v) => !v)}
           whileTap={{ scale: 0.92 }}
         >

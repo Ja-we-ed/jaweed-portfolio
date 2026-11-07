@@ -244,3 +244,8 @@
   0%, 100% { opacity: 0.75; }
   50% { opacity: 1; }
 }
+
+@layer base {
+  /* Fixed nav (~82px) never covers a section heading on anchor jumps. */
+  section[id] { scroll-margin-top: 6rem; }
+}

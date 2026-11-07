@@ -202,7 +202,7 @@ function TerminalPlay({ reduce }: { reduce: boolean }) {
       style={style}
       className="min-h-[12rem] overflow-hidden rounded-2xl border border-primary/20 bg-[rgba(8,20,28,0.55)] px-4 py-4 font-mono text-[13px] leading-relaxed backdrop-blur-[8px] sm:px-5 lg:min-h-[8rem]"
     >
-      <p className="text-[11px] uppercase tracking-[0.18em] text-primary/80">Directed session</p>
+      <p className="text-[12px] sm:text-[11px] uppercase tracking-[0.18em] text-primary/80">Directed session</p>
       <p className="mt-2 text-text">
         <span className="text-primary">›</span> {prompt}
         {phase === 'prompt' && (
@@ -282,7 +282,7 @@ export function AINative() {
         </div>
 
         <div className="mt-12">
-          <p className="font-mono text-[11px] uppercase tracking-[0.2em] text-primary">{ai.toolkitLabel}</p>
+          <p className="font-mono text-[12px] sm:text-[11px] uppercase tracking-[0.2em] text-primary">{ai.toolkitLabel}</p>
           <p className="mt-1 text-[13px] text-muted">{ai.toolkitNote}</p>
           <ul className="mt-5 flex flex-wrap gap-2.5">
             {ai.toolkit.map((tool) => {
@@ -297,7 +297,7 @@ export function AINative() {
                       <path d={icon.path} fill={brandFill(icon.hex)} />
                     </svg>
                   ) : (
-                    <span className="grid h-4 w-4 place-items-center rounded-full bg-[#10a37f] font-mono text-[9px] font-bold leading-none text-white" aria-hidden>
+                    <span className="grid h-4 w-4 place-items-center rounded-full bg-[#10a37f] font-mono text-[12px] sm:text-[9px] font-bold leading-none text-white" aria-hidden>
                       G
                     </span>
                   )}

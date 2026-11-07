@@ -61,7 +61,7 @@ export function Hero() {
         <motion.div variants={staggerContainer} initial="hidden" animate="show">
           <motion.div variants={childFadeUp} className="mb-5 flex flex-wrap items-center gap-2.5">
             <motion.span
-              className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary-soft px-3 py-1 text-[12px] font-medium text-primary"
+              className="relative inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary-soft px-3 py-1 text-[12px] before:absolute before:-inset-y-2 before:inset-x-0 before:content-[''] font-medium text-primary"
               whileHover={{ scale: 1.03, borderColor: 'hsla(199, 96%, 58%, 0.45)' }}
               transition={springSoft}
             >
@@ -83,7 +83,7 @@ export function Hero() {
             </motion.span>
             <motion.a
               href="#ai"
-              className="inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary-soft px-3 py-1 text-[12px] font-medium text-primary"
+              className="relative inline-flex items-center gap-1.5 rounded-full border border-primary/25 bg-primary-soft px-3 py-1 text-[12px] before:absolute before:-inset-y-2 before:inset-x-0 before:content-[''] font-medium text-primary"
               whileHover={{ scale: 1.03, borderColor: 'hsla(199, 96%, 58%, 0.5)' }}
               transition={springSoft}
             >
@@ -93,7 +93,7 @@ export function Hero() {
 
           <motion.p
             variants={childFadeUp}
-            className="mb-3 inline-flex items-center gap-2 font-mono text-[11px] uppercase tracking-[0.24em] text-muted"
+            className="mb-3 inline-flex items-center gap-2 font-mono text-[12px] sm:text-[11px] uppercase tracking-[0.24em] text-muted"
           >
             <span className="relative flex h-1.5 w-1.5">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/50 opacity-70" />
@@ -112,7 +112,7 @@ export function Hero() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.55, duration: 0.45, ease: easeOutExpo }}
-              className="font-mono text-[11px] uppercase tracking-[0.28em] text-primary/80"
+              className="font-mono text-[12px] sm:text-[11px] uppercase tracking-[0.28em] text-primary/80"
             >
               ·
             </motion.span>
@@ -202,7 +202,7 @@ export function Hero() {
                   <p className="truncate font-display text-xl font-semibold tracking-tight text-text sm:text-2xl">
                     {m.value}
                   </p>
-                  <p className="mt-1 line-clamp-2 font-mono text-[10px] uppercase leading-tight tracking-[0.14em] text-muted">
+                  <p className="mt-1 line-clamp-2 font-mono text-[12px] sm:text-[10px] uppercase leading-tight tracking-[0.14em] text-muted">
                     {m.label}
                   </p>
                 </motion.div>
@@ -225,7 +225,7 @@ export function Hero() {
       <motion.a
         href="#about"
         aria-label="Scroll to about"
-        className="absolute bottom-6 left-1/2 flex -translate-x-1/2 flex-col items-center gap-1.5 text-muted"
+        className="absolute bottom-4 left-1/2 flex min-h-11 min-w-11 -translate-x-1/2 flex-col items-center justify-center gap-1.5 p-2 text-muted sm:bottom-6 sm:p-0"
         initial={{ opacity: 0, y: -8 }}
         animate={
           reduce
@@ -247,7 +247,7 @@ export function Hero() {
         }
         whileHover={{ color: 'hsl(199 96% 58%)', y: 2 }}
       >
-        <span className="font-mono text-[10px] uppercase tracking-[0.22em]">Scroll</span>
+        <span className="font-mono text-[12px] sm:text-[10px] uppercase tracking-[0.22em]">Scroll</span>
         <ArrowDown size={14} className="opacity-70" />
       </motion.a>
     </section>

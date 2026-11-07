@@ -132,11 +132,11 @@ function SkillTile({ item, index, reduce }: { item: SkillItem; index: number; re
         </div>
         <div className="flex flex-wrap items-center gap-2">
           <h3 className="font-display text-lg font-semibold tracking-tight text-text">{item.name}</h3>
-          <span className="rounded-full border border-border/80 px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+          <span className="rounded-full border border-border/80 px-2 py-0.5 font-mono text-[12px] sm:text-[10px] uppercase tracking-[0.14em] text-muted">
             {item.category}
           </span>
         </div>
-        <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.16em] text-primary">{item.level}</p>
+        <p className="mt-1 font-mono text-[12px] sm:text-[11px] uppercase tracking-[0.16em] text-primary">{item.level}</p>
         <p className="mt-3 text-[13.5px] leading-relaxed text-muted">{item.use}</p>
       </motion.div>
     </motion.article>

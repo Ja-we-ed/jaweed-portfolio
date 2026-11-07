@@ -26,7 +26,7 @@ function EducationItem({ item, i }: { item: EduItem; i: number }) {
             : 'border-border-strong bg-bg'
         }`}
       />
-      <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-muted">
+      <p className="font-mono text-[12px] sm:text-[11px] uppercase tracking-[0.16em] text-muted">
         {item.period}
       </p>
       <motion.div
@@ -45,7 +45,7 @@ function EducationItem({ item, i }: { item: EduItem; i: number }) {
             {item.org}
           </h3>
           {item.current && (
-            <span className="rounded-full bg-primary-soft px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-primary">
+            <span className="rounded-full bg-primary-soft px-2 py-0.5 font-mono text-[12px] sm:text-[10px] uppercase tracking-wider text-primary">
               Current
             </span>
           )}
