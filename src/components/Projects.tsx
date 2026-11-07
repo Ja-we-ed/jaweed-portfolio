@@ -53,17 +53,17 @@ function ProjectSlide({ item, listed = true }: { item: ProjectItem; listed?: boo
         />
         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-bg via-transparent to-bg/15" />
         <div className="absolute left-3 top-3 flex flex-wrap items-center gap-1.5">
-          <span className="rounded-full border border-white/10 bg-black/35 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.16em] text-white/80 backdrop-blur">
+          <span className="rounded-full border border-white/10 bg-black/35 px-2.5 py-1 font-mono text-[12px] sm:text-[9px] uppercase tracking-[0.16em] text-white/80 backdrop-blur">
             Case {item.id}
           </span>
           <span
-            className={`rounded-full border border-white/10 bg-black/35 px-2.5 py-1 font-mono text-[9px] uppercase tracking-[0.16em] backdrop-blur ${statusTone(item.status)}`}
+            className={`rounded-full border border-white/10 bg-black/35 px-2.5 py-1 font-mono text-[12px] sm:text-[9px] uppercase tracking-[0.16em] backdrop-blur ${statusTone(item.status)}`}
           >
             {item.status}
           </span>
         </div>
         <div className="absolute bottom-3 left-3 right-3 flex items-end justify-between gap-3">
-          <span className="max-w-[75%] rounded-lg bg-primary px-2.5 py-1.5 font-mono text-[8px] font-semibold uppercase tracking-[0.12em] text-bg">
+          <span className="max-w-[75%] rounded-lg bg-primary px-2.5 py-1.5 font-mono text-[12px] sm:text-[8px] font-semibold uppercase tracking-[0.12em] text-bg">
             {item.role}
           </span>
           {comingSoon ? (
@@ -92,13 +92,13 @@ function ProjectSlide({ item, listed = true }: { item: ProjectItem; listed?: boo
           {item.tags.slice(0, 3).map((tag) => (
             <span
               key={tag}
-              className="rounded-md border border-border/70 px-2 py-0.5 text-[11px] text-muted"
+              className="rounded-md border border-border/70 px-2 py-0.5 text-[12px] sm:text-[11px] text-muted"
             >
               {tag}
             </span>
           ))}
           {comingSoon && (
-            <span className="rounded-full border border-border px-2 py-0.5 font-mono text-[10px] uppercase tracking-[0.14em] text-muted">
+            <span className="rounded-full border border-border px-2 py-0.5 font-mono text-[12px] sm:text-[10px] uppercase tracking-[0.14em] text-muted">
               Coming soon
             </span>
           )}
@@ -128,6 +128,7 @@ export function Projects() {
     lastX: number
     lastY: number
     lastT: number
+    totalDx: number
     axis: 'x' | 'y' | null
     active: boolean
   } | null>(null)
@@ -257,6 +258,7 @@ export function Projects() {
       lastT: performance.now(),
       axis: null,
       active: true,
+      totalDx: 0,
     }
     modeRef.current = 'drag'
     velRef.current = 0
@@ -294,6 +296,7 @@ export function Projects() {
     pointer.lastX = event.clientX
     pointer.lastY = event.clientY
     pointer.lastT = now
+    pointer.totalDx += dx
     x.set(wrapX(x.get() + dx, widthRef.current))
   }
 
@@ -303,6 +306,31 @@ export function Projects() {
     const dragged = pointer.axis === 'x' && pointer.active
     pointer.active = false
     pointerRef.current = null
+    // Narrow phones: a short swipe snaps exactly one card, like the arrows.
+    const narrow = typeof window !== 'undefined' && window.innerWidth <= 400
+    const total = pointer.totalDx
+    const step = stepRef.current
+    if (dragged && narrow && step > 0 && Math.abs(total) >= 24) {
+      const dir = total < 0 ? 1 : -1
+      const from = x.get()
+      const dest = from - total - dir * step
+      stopNudge()
+      modeRef.current = 'nudge'
+      velRef.current = 0
+      nudgeAnim.current = animate(from, dest, {
+        type: 'spring',
+        stiffness: 300,
+        damping: 36,
+        mass: 0.65,
+        onUpdate: (value) => x.set(value),
+        onComplete: () => {
+          x.set(wrapX(x.get(), widthRef.current || step * visible.length))
+          nudgeAnim.current = null
+          modeRef.current = paused || reduce ? 'hover' : 'drift'
+        },
+      })
+      return
+    }
     if (dragged && Math.abs(velRef.current) > 0.02) {
       modeRef.current = 'inertia'
     } else {
@@ -360,7 +388,7 @@ export function Projects() {
         </div>
 
         <div className="mb-5 flex items-center justify-between gap-4">
-          <p className="inline-flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-muted">
+          <p className="inline-flex items-center gap-2 font-mono text-[12px] sm:text-[9px] uppercase tracking-[0.16em] text-muted">
             <MousePointer2 size={14} className="text-primary" />
             Project reel · drag
           </p>
@@ -368,7 +396,7 @@ export function Projects() {
             <div className="flex items-center gap-3">
               <p
                 data-reel-index={reelIndex}
-                className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted"
+                className="whitespace-nowrap font-mono text-[12px] uppercase tracking-[0.16em] text-muted sm:text-[10px]"
                 aria-live="polite"
               >
                 {String(reelIndex + 1).padStart(2, '0')} / {String(visible.length).padStart(2, '0')}
@@ -378,7 +406,7 @@ export function Projects() {
                 aria-label="Previous project"
                 data-project-prev
                 onClick={() => nudge(-1)}
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-bg/80 text-muted transition hover:border-primary/40 hover:bg-primary-soft hover:text-primary"
+                className="grid h-11 w-11 place-items-center rounded-full sm:h-10 sm:w-10 border border-white/10 bg-bg/80 text-muted transition hover:border-primary/40 hover:bg-primary-soft hover:text-primary"
               >
                 <ArrowLeft size={16} />
               </button>
@@ -387,7 +415,7 @@ export function Projects() {
                 aria-label="Next project"
                 data-project-next
                 onClick={() => nudge(1)}
-                className="grid h-10 w-10 place-items-center rounded-full border border-white/10 bg-bg/80 text-muted transition hover:border-primary/40 hover:bg-primary-soft hover:text-primary"
+                className="grid h-11 w-11 place-items-center rounded-full sm:h-10 sm:w-10 border border-white/10 bg-bg/80 text-muted transition hover:border-primary/40 hover:bg-primary-soft hover:text-primary"
               >
                 <ArrowRight size={16} />
               </button>

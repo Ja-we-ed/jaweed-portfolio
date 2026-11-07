@@ -55,6 +55,33 @@ export function About() {
             </motion.span>
           ))}
         </motion.div>
+        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5">
+          {[
+            { src: 'coding-class.webp', alt: 'Laptop with code open during a class', n: '02 / 03' },
+            { src: 'office-floor.webp', alt: 'People working at desks in an open office', n: '03 / 03' },
+          ].map((ph) => (
+            <motion.div
+              key={ph.src}
+              whileHover={{ y: -4, transition: springPop }}
+              transition={hoverOff}
+              className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.4rem] border border-border bg-bg-card shadow-[0_20px_60px_hsl(224_60%_2%/0.6)]"
+            >
+              <img
+                src={`${import.meta.env.BASE_URL}assets/${ph.src}`}
+                alt={ph.alt}
+                width={736}
+                height={552}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 h-full w-full object-cover"
+              />
+              <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,transparent_65%,hsl(224_55%_4%/0.4)_100%)]" />
+              <span className="absolute left-3 top-3 rounded-full bg-bg/70 px-2.5 py-1 font-mono text-[12px] sm:text-[10px] uppercase tracking-wider text-muted backdrop-blur">
+                {ph.n}
+              </span>
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   )

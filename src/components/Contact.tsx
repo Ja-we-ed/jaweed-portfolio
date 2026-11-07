@@ -90,9 +90,11 @@ export function Contact() {
             style={links.style}
             className="border-t border-border/70 lg:border-t-0 lg:border-l lg:pl-10"
           >
-            <SocialRow href={site.socials.github} label="GitHub" hint="Code & commits" icon={<GithubIcon />} />
-            <SocialRow href={site.socials.linkedin} label="LinkedIn" hint="Career path" icon={<LinkedinIcon />} />
-            <SocialRow href={site.socials.x} label="X / Twitter" hint="Updates" icon={<XIcon />} />
+            <SocialRow href={site.socials.github} label="GitHub" hint="@Ja-we-ed" icon={<GithubIcon />} />
+            {site.socials.linkedin && (
+              <SocialRow href={site.socials.linkedin} label="LinkedIn" hint="in/jaweed-dev" icon={<LinkedinIcon />} />
+            )}
+            <SocialRow href={site.socials.x} label="X / Twitter" hint="@Ja_we_ed" icon={<XIcon />} />
           </motion.div>
         </div>
       </div>
@@ -123,7 +125,7 @@ function SocialRow({
       onClick={(e) => {
         if (isPlaceholder) e.preventDefault()
       }}
-      title={isPlaceholder ? 'Add your link in content.ts' : undefined}
+      
       whileHover={{
         paddingLeft: 6,
         borderColor: 'hsla(199, 96%, 58%, 0.45)',
@@ -139,7 +141,7 @@ function SocialRow({
             {label}
           </span>
           <span className="mt-0.5 block text-[13px] text-muted">
-            {isPlaceholder ? 'Add link in content.ts' : hint}
+            {hint}
           </span>
         </span>
       </span>

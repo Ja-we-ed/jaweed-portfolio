@@ -61,7 +61,7 @@ function CircuitCard({
       </div>
 
       <div className="flex flex-col justify-center p-5 sm:p-7">
-        <p className="font-mono text-[11px] uppercase tracking-[0.18em] text-primary">{node.detail}</p>
+        <p className="font-mono text-[12px] sm:text-[11px] uppercase tracking-[0.18em] text-primary">{node.detail}</p>
         <h3 className="mt-2 font-display text-2xl font-semibold tracking-tight text-text sm:text-[1.75rem]">
           {node.label}
         </h3>
@@ -231,7 +231,7 @@ export function Pipeline() {
                       aria-hidden
                     />
                     <span className="min-w-0">
-                      <span className="block font-mono text-[11px] uppercase tracking-[0.16em]">
+                      <span className="block font-mono text-[12px] sm:text-[11px] uppercase tracking-[0.16em]">
                         {String(i + 1).padStart(2, '0')}
                       </span>
                       <span
@@ -247,7 +247,7 @@ export function Pipeline() {
                 )
               })}
             </ol>
-            <p className="mt-5 pl-4 font-mono text-[11px] uppercase tracking-[0.18em] text-primary">
+            <p className="mt-5 pl-4 font-mono text-[12px] sm:text-[11px] uppercase tracking-[0.18em] text-primary">
               → {pipeline.outcome}
             </p>
           </nav>
@@ -279,7 +279,7 @@ export function Pipeline() {
               style={outcome.style}
               className="flex justify-center pt-2 lg:hidden"
             >
-              <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary-soft px-4 py-2 font-mono text-[11px] uppercase tracking-[0.2em] text-primary shadow-[0_0_24px_hsla(199,96%,58%,0.2)]">
+              <span className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary-soft px-4 py-2 font-mono text-[12px] sm:text-[11px] uppercase tracking-[0.2em] text-primary shadow-[0_0_24px_hsla(199,96%,58%,0.2)]">
                 <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-primary" />
                 → {pipeline.outcome}
               </span>

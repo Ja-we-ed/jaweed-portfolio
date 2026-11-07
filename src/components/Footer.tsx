@@ -9,7 +9,7 @@ export function Footer() {
         </p>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2 text-[12px] text-muted">
           <p>Built with React · Vite · Tailwind · Framer Motion</p>
-          <a href="#top" className="text-muted transition hover:text-primary">
+          <a href="#top" className="-my-3 inline-flex min-h-11 items-center py-3 text-muted transition hover:text-primary">
             Back to top
           </a>
         </div>

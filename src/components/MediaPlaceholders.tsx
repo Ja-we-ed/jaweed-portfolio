@@ -1,4 +1,4 @@
-import { Camera, Clapperboard } from 'lucide-react'
+import { Clapperboard } from 'lucide-react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { springSoft } from '../motion'
 
@@ -14,28 +14,22 @@ export function MediaPlaceholders() {
           whileHover={reduce ? undefined : { y: -4, transition: springSoft }}
           className="relative aspect-[4/3] w-full overflow-hidden rounded-[1.6rem] border border-border bg-bg-card shadow-[0_24px_80px_hsl(224_60%_2%/0.65)]"
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(199_96%_58%/0.15),transparent_55%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,transparent_40%,hsl(224_55%_4%/0.85)_100%)]" />
+          <img
+            src={`${import.meta.env.BASE_URL}assets/team-table.webp`}
+            alt="Team working together at a shared desk"
+            width={736}
+            height={552}
+            loading="eager"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,hsl(199_96%_58%/0.08),transparent_55%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,hsl(224_55%_4%/0.25)_0%,transparent_25%,transparent_70%,hsl(224_55%_4%/0.45)_100%)]" />
 
           <div className="absolute left-4 right-4 top-4 z-10 flex items-center justify-between">
-            <span className="rounded-full bg-bg/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted backdrop-blur">
+            <span className="rounded-full bg-bg/70 px-2.5 py-1 font-mono text-[12px] sm:text-[10px] uppercase tracking-wider text-muted backdrop-blur">
               01 / 03
             </span>
-            <span className="rounded-full bg-bg/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted backdrop-blur">
-              Portrait
-            </span>
-          </div>
-
-          <div className="relative z-[1] flex h-full flex-col items-center justify-center gap-3 p-6 pt-12 text-center">
-            <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-soft text-primary ring-1 ring-primary/20">
-              <Camera size={24} strokeWidth={1.75} />
-            </span>
-            <p className="font-mono text-[11px] uppercase tracking-[0.22em] text-primary">
-              Photo coming soon
-            </p>
-            <p className="max-w-[16rem] text-sm text-muted">
-              Portrait slot — a 4:3 frame like the reference, ready for a photo later.
-            </p>
           </div>
         </motion.div>
 
@@ -51,11 +45,11 @@ export function MediaPlaceholders() {
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary/50 opacity-60" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
               </span>
-              <span className="font-mono text-[10px] uppercase tracking-wider text-muted">
+              <span className="font-mono text-[12px] sm:text-[10px] uppercase tracking-wider text-muted">
                 Idle
               </span>
             </span>
-            <span className="rounded-full bg-bg/70 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted backdrop-blur">
+            <span className="rounded-full bg-bg/70 px-2.5 py-1 font-mono text-[12px] sm:text-[10px] uppercase tracking-wider text-muted backdrop-blur">
               Reel
             </span>
           </div>
@@ -64,7 +58,7 @@ export function MediaPlaceholders() {
             <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/[0.04] text-muted ring-1 ring-white/10">
               <Clapperboard size={18} strokeWidth={1.75} />
             </span>
-            <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted">
+            <p className="font-mono text-[12px] sm:text-[10px] uppercase tracking-[0.2em] text-muted">
               Field reel coming soon
             </p>
             <p className="max-w-[16rem] text-[13px] leading-relaxed text-muted">

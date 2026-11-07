@@ -32,10 +32,10 @@ function ChapterItem({ ch, i }: { ch: Chapter; i: number }) {
           >
             <span className="h-2 w-2 rounded-full bg-primary" />
           </motion.span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.22em] text-primary">
+          <span className="font-mono text-[12px] sm:text-[10px] uppercase tracking-[0.22em] text-primary">
             Chapter {ch.chapter}
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-dim">
+          <span className="font-mono text-[12px] sm:text-[10px] uppercase tracking-[0.16em] text-muted-dim">
             · {ch.period}
           </span>
         </div>
@@ -57,7 +57,7 @@ function ChapterItem({ ch, i }: { ch: Chapter; i: number }) {
           left ? 'sm:ml-4' : 'sm:mr-4'
         }`}
       >
-        <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-muted-dim">
+        <p className="font-mono text-[12px] sm:text-[10px] uppercase tracking-[0.2em] text-muted-dim">
           Frame {ch.chapter}
         </p>
         <p className="mt-3 font-display text-lg font-semibold text-text/90">{ch.title}</p>

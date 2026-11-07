@@ -3,15 +3,18 @@
  * Components read from here — no need to hunt through JSX.
  */
 
+/** Public-folder URL. `BASE_URL` is `/` in dev and `/jaweed-portfolio/` in production. */
+const publicAsset = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
 export const site = {
   name: 'Jaweed',
   location: 'Dhaka · Bangladesh',
-  availability: 'Open to internships & junior roles',
-  email: 'hello@jaweed.dev', // TODO: replace with your real email
+  availability: 'Open to remote freelance, internships & junior roles',
+  email: 'jaweedbin@gmail.com',
   socials: {
-    github: '#', // TODO: https://github.com/yourhandle
-    linkedin: '#', // TODO: https://linkedin.com/in/yourhandle
-    x: '#', // TODO: https://x.com/yourhandle
+    github: 'https://github.com/Ja-we-ed',
+    linkedin: 'https://www.linkedin.com/in/jaweed-dev',
+    x: 'https://x.com/Ja_we_ed',
   },
 } as const
 
@@ -54,7 +57,7 @@ export const pipeline = {
       label: 'Idea',
       detail: 'Find the real problem',
       body: 'Start with the person who will actually use it — a teacher taking attendance, a student counting taka — before a single line of code.',
-      image: '/circuit/idea.webp',
+      image: publicAsset('circuit/idea.webp'),
       imageAlt: 'A painted tea stall at Dhaka University TSC, where campus ideas often start',
     },
     {
@@ -62,7 +65,7 @@ export const pipeline = {
       label: 'Design',
       detail: 'Shape the smallest honest UI',
       body: 'Sketch the smallest version that still feels clear. Paper first, pixels second, so the interface does not outrun the problem.',
-      image: '/circuit/design.webp',
+      image: publicAsset('circuit/design.webp'),
       imageAlt: 'A hand drawing numbered mobile wireframes on paper',
     },
     {
@@ -70,7 +73,7 @@ export const pipeline = {
       label: 'Build',
       detail: 'Ship readable systems',
       body: 'Write code another student could open tomorrow and follow. Names that mean something, structure that stays calm under change.',
-      image: '/circuit/build.webp',
+      image: publicAsset('circuit/build.webp'),
       imageAlt: 'A laptop showing code on a bright desk beside a second monitor',
     },
     {
@@ -78,7 +81,7 @@ export const pipeline = {
       label: 'Ship',
       detail: 'Put it in front of people',
       body: 'A build that only I can run is still a draft. The loop closes when someone else can click, compile, or hold it.',
-      image: '/circuit/ship.webp',
+      image: publicAsset('circuit/ship.webp'),
       imageAlt: 'A straddle carrier moving shipping containers at the Port of Chittagong',
     },
     {
@@ -86,7 +89,7 @@ export const pipeline = {
       label: 'Grow',
       detail: 'Learn, refine, expand',
       body: 'Keep what worked, cut what did not, and take the next tighter pass. Every circuit should leave the last one looking a little naive.',
-      image: '/circuit/grow.webp',
+      image: publicAsset('circuit/grow.webp'),
       imageAlt: 'Terraced tea gardens in Sreemangal, Bangladesh',
     },
   ],
@@ -247,7 +250,7 @@ export const projects = {
       tags: ['Arduino', 'C++', 'IR sensors', 'Ultrasonic'],
       status: 'Building' as ProjectStatus,
       category: 'Hardware' as ProjectCategory,
-      image: '/projects/line-follower.webp',
+      image: publicAsset('projects/line-follower.webp'),
       imageAlt: 'Arduino Uno and breadboard used to prototype a line-follower robot',
       href: '',
     },
@@ -260,7 +263,7 @@ export const projects = {
       tags: ['ESP32', 'Arduino', 'Sensors', 'MQTT'],
       status: 'Building' as ProjectStatus,
       category: 'Hardware' as ProjectCategory,
-      image: '/projects/smart-planter.webp',
+      image: publicAsset('projects/smart-planter.webp'),
       imageAlt: 'Potted plants on a Bangladeshi rooftop garden, standing in for an IoT planter',
       href: '',
     },
@@ -273,7 +276,7 @@ export const projects = {
       tags: ['React', 'Node.js', 'Express', 'MySQL'],
       status: 'Building' as ProjectStatus,
       category: 'Web' as ProjectCategory,
-      image: '/projects/attendance.webp',
+      image: publicAsset('projects/attendance.webp'),
       imageAlt: 'Tree-lined walkway at the University of Liberal Arts Bangladesh campus in Dhaka',
       href: '',
     },
@@ -286,7 +289,7 @@ export const projects = {
       tags: ['Python', 'TensorFlow', 'OpenCV', 'NumPy'],
       status: 'Next up' as ProjectStatus,
       category: 'ML' as ProjectCategory,
-      image: '/projects/bangla-digits.webp',
+      image: publicAsset('projects/bangla-digits.webp'),
       imageAlt: 'Eyeglasses in front of a dark code editor, standing in for a handwritten Bangla digit recognizer',
       href: '',
     },
@@ -299,7 +302,7 @@ export const projects = {
       tags: ['Kotlin', 'Android', 'Firebase', 'REST'],
       status: 'Next up' as ProjectStatus,
       category: 'Mobile' as ProjectCategory,
-      image: '/projects/campus-bites.webp',
+      image: publicAsset('projects/campus-bites.webp'),
       imageAlt: 'Vendors cooking at a street food stall in Dhaka, standing in for a campus food-run app',
       href: '',
     },
@@ -313,7 +316,7 @@ export const projects = {
       tags: ['C', 'File I/O', 'Structs', 'CLI'],
       status: 'Building' as ProjectStatus,
       category: 'Fundamentals' as ProjectCategory,
-      image: '/projects/library-desk.webp',
+      image: publicAsset('projects/library-desk.webp'),
       imageAlt: 'Bookshops at Nilkhet Book Market in Dhaka, standing in for a campus library desk system',
       href: '',
     },
@@ -326,7 +329,7 @@ export const projects = {
       tags: ['C concepts', 'JavaScript', 'React', 'Algorithms'],
       status: 'Building' as ProjectStatus,
       category: 'Fundamentals' as ProjectCategory,
-      image: '/projects/structure-lab.webp',
+      image: publicAsset('projects/structure-lab.webp'),
       imageAlt: 'Close-up of syntax-highlighted code on a monitor',
       href: '',
     },
@@ -339,7 +342,7 @@ export const projects = {
       tags: ['React', 'TypeScript', 'Local-first', 'i18n'],
       status: 'Next up' as ProjectStatus,
       category: 'Web' as ProjectCategory,
-      image: '/projects/taka-track.webp',
+      image: publicAsset('projects/taka-track.webp'),
       imageAlt: 'Scattered Bangladeshi 10-taka banknotes, standing in for a bilingual expense tracker',
       href: '',
     },
@@ -352,7 +355,7 @@ export const projects = {
       tags: ['React', 'REST', 'Open-Meteo', 'Vite'],
       status: 'Next up' as ProjectStatus,
       category: 'Web' as ProjectCategory,
-      image: '/projects/open-sky.webp',
+      image: publicAsset('projects/open-sky.webp'),
       imageAlt: 'Hatirjheel lake and the Dhaka skyline under open sky, standing in for a weather dashboard',
       href: '',
     },
